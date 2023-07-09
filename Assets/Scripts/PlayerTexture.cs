@@ -2,11 +2,9 @@ using Newtonsoft.Json;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerTexture : MonoBehaviour
-{
+public class PlayerTexture : MonoBehaviour {
     [System.Serializable]
-    private struct JSONColor
-    {
+    private struct JSONColor {
         public byte r;
         public byte g;
         public byte b;
@@ -14,8 +12,7 @@ public class PlayerTexture : MonoBehaviour
     }
 
     [System.Serializable]
-    private struct PlayerTextureJSON
-    {
+    private struct PlayerTextureJSON {
         public JSONColor primary;
         public JSONColor secondary;
         public ushort size;
@@ -36,10 +33,8 @@ public class PlayerTexture : MonoBehaviour
 
         Debug.Log("Texture:");
         Debug.Log(playerTextureJSON.texture);
-        for (ushort row = 0; row < playerTextureJSON.size; row++)
-        {
-            for (ushort col = 0; col < playerTextureJSON.size; col++)
-            {
+        for (ushort row = 0; row < playerTextureJSON.size; row++) {
+            for (ushort col = 0; col < playerTextureJSON.size; col++) {
                 Debug.Log(playerTextureJSON.texture[row, col]);
             }
         }
