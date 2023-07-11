@@ -4,24 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerTexture : MonoBehaviour {
     [System.Serializable]
-    private struct JSONColor {
-        public byte r;
-        public byte g;
-        public byte b;
-        public float a;
-
-        public JSONColor(byte r, byte g, byte b, float a) {
-            this.r = r;
-            this.g = g;
-            this.b = b;
-            this.a = a;
-        }
-    }
-
-    [System.Serializable]
     private struct PlayerTextureJSON {
-        public JSONColor primary;
-        public JSONColor secondary;
+        public JSONParser.JSONColor primary;
+        public JSONParser.JSONColor secondary;
         public ushort size;
         public byte[,] texture;
     }
@@ -64,7 +49,7 @@ public class PlayerTexture : MonoBehaviour {
                 Debug.Log(y);
                 Debug.Log(x);
                 byte pixelValue = textureData[-y + offset, x];
-                Color color = pixelValue == 1 ? GetColor(ref playerTextureJSON.primary) : GetColor(ref playerTextureJSON.secondary);
+                Color color = pixelValue == 1 ? JSONParser.GetColor(playerTextureJSON.primary) : JSONParser.GetColor(playerTextureJSON.secondary);
                 texture.SetPixel(x, y, color);
             }
         }
@@ -78,30 +63,6 @@ public class PlayerTexture : MonoBehaviour {
         return texture;
     }
 
-    private Color GetColor(ref JSONColor jsonColor) {
-        float r = jsonColor.r / 255f;
-        float g = jsonColor.g / 255f;
-        float b = jsonColor.b / 255f;
-        float a = jsonColor.a;
-        return new Color(r, g, b, a);
-    }
-
-    private void ApplyTextureToSpriteRenderer(ref Texture2D texture) {
-        if (spriteRenderer == null) {
-            Debug.LogError("SpriteRenderer is not assigned");
-            return;
-        }
-
-        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one * 0.5f);
-
-        float desiredScale = 128f;
-        float width = texture.width;
-
-        float newWidth = desiredScale / width;
-
-        spriteRenderer.sprite = sprite;
-        spriteRenderer.transform.localScale = new Vector3(newWidth, newWidth, 1f);
-    }
 
     private void Start() {
         // Read JSON
@@ -111,6 +72,6 @@ public class PlayerTexture : MonoBehaviour {
         Texture2D texture = CreateTexture(ref json);
 
         // Apply texture
-        ApplyTextureToSpriteRenderer(ref texture);
+        Texture.ApplyTextureToSpriteRenderer(ref spriteRenderer, ref texture, 128f);
     }
 }
