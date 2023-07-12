@@ -54,7 +54,6 @@ public class PlayerTexture : MonoBehaviour {
             }
         }
 
-        // Scale texture
         texture.filterMode = FilterMode.Point;
         texture.wrapMode = TextureWrapMode.Clamp;
 
