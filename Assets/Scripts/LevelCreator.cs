@@ -19,7 +19,7 @@ public class LevelCreator : MonoBehaviour {
 
     [System.Serializable]
     [JsonConverter(typeof(StringEnumConverter))]
-    enum BlockName {
+    private enum BlockName {
         basic
     }
 
