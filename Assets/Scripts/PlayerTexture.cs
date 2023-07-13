@@ -71,6 +71,6 @@ public class PlayerTexture : MonoBehaviour {
         Texture2D texture = CreateTexture(ref json);
 
         // Apply texture
-        Texture.ApplyTextureToSpriteRenderer(ref spriteRenderer, ref texture, 128f);
+        Texture.ApplyTextureToSpriteRenderer(ref spriteRenderer, ref texture, 100f);
     }
 }

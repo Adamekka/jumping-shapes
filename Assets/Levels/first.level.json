@@ -1,0 +1,44 @@
+{
+    "id": "1",
+    "name": "First",
+    "author": "Adamekka",
+    "version": {
+        "major": 0,
+        "minor": 0,
+        "patch": 1
+    },
+    "description": "First Jumping Shapes level ever created",
+    "song": "first.mp3",
+    "background": "first.png",
+    "difficulty": "1",
+    "playerStartingPos": {
+        "x": 0,
+        "y": 1
+    },
+    "blocks": [
+        {
+            "id": "0",
+            "name": "basic",
+            "pos": {
+                "x": 0,
+                "y": -1
+            },
+            "size": {
+                "x": 1,
+                "y": 1
+            }
+        },
+        {
+            "id": "1",
+            "name": "basic",
+            "pos": {
+                "x": 1,
+                "y": -1
+            },
+            "size": {
+                "x": 1,
+                "y": 1
+            }
+        }
+    ]
+}
